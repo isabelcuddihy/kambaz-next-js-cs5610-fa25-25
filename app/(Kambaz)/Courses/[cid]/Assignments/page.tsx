@@ -9,27 +9,27 @@ export default function Assignments() {
           ASSIGNMENTS 40% of Total <button>+</button> </h3>
         <ul id="wd-assignment-list">
           <li className="wd-assignment-list-item">
-            <a href="/Courses/1234/Assignments/123"
+            <link href="/Courses/1234/Assignments/123"
                className="wd-assignment-link" >
               A1 - ENV + HTML
-            </a> <br/>
+            </link> <br/>
             Multiple Modules | Available Soon <br/>
             Due Jan 1 2000 at 12:00 AM | 100 points
             </li>
           <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/234"
+          <link href="/Courses/1234/Assignments/234"
                className="wd-assignment-link" >
               A2 - HTML + CSS
-            </a> 
+            </link> 
             <br/>
             CSS Challenge | Available Jan 1 12:01 AM <br/>
             Due Jan 1 2000 at 12:02 AM | 10 points
           </li>
           <li className="wd-assignment-list-item">
-          <a href="/Courses/1234/Assignments/345"
+          <link href="/Courses/1234/Assignments/345"
                className="wd-assignment-link" >
               A3 - CSS + Javascript
-            </a> 
+            </link> 
             <br/>
             Javascript 101 | Available Jan 1 12:05 AM <br/>
             Due Jan 1 2000 at 12:30 AM | 60 points

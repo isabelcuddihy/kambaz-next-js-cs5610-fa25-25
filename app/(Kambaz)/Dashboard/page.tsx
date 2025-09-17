@@ -56,7 +56,7 @@ export default function Dashboard() {
         </div>
         <div className="wd-dashboard-course">
           <Link href="/Courses/5678" className="wd-dashboard-course-link">
-            <Image src="/images/reactjs.jpeg" width={200} height={150} />
+            <img src="/images/reactjs.jpeg" alt="ReactJS" width={200} height={150} />
             <div>
               <h5> CS5678 React JS and Beyond </h5>
               <p className="wd-dashboard-course-title">
