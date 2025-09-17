@@ -281,7 +281,7 @@ Please
 to get dummy text<br/>
 
 Please 
-<a href="https://github.khoury.northeastern.edu/isabelcuddihy/kambaz-next-js-cs5610-fa25-25" id="wd-github"> click here </a>
+<a href="https://github.com/isabelcuddihy/kambaz-next-js-cs5610-fa25-25.git" id="wd-github"> click here </a>
 to go to github<br/>
 
       </div>
