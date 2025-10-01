@@ -4,6 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "../Modules/GreenCheckmark";
+import Link from "next/link";
 
 export default function Assignments() {
   return (
@@ -51,9 +52,9 @@ export default function Assignments() {
                 <div className="d-flex align-items-start">
                   <BsGripVertical className="me-2 fs-3" />
                   <div>
-                    <a href="/Courses/1234/Assignments/123" className="wd-assignment-link text-dark fw-bold text-decoration-none">
+                    <Link href="/Courses/1234/Assignments/123" className="wd-assignment-link text-dark fw-bold text-decoration-none">
                       A1 - ENV + HTML
-                    </a>
+                    </Link>
                     <div className="text-muted small">
                       <span className="text-danger">Multiple Modules</span> | <strong>Not available until</strong> May 6 at 12:00am
                     </div>
@@ -74,9 +75,9 @@ export default function Assignments() {
                 <div className="d-flex align-items-start">
                   <BsGripVertical className="me-2 fs-3" />
                   <div>
-                    <a href="/Courses/1234/Assignments/234" className="wd-assignment-link text-dark fw-bold text-decoration-none">
+                    <Link href="/Courses/1234/Assignments/234" className="wd-assignment-link text-dark fw-bold text-decoration-none">
                       A2 - CSS + Bootstrap
-                    </a>
+                    </Link>
                     <div className="text-muted small">
                       <span className="text-danger">Multiple Modules</span> | <strong>Not available until</strong> May 13 at 12:00am
                     </div>
@@ -97,9 +98,9 @@ export default function Assignments() {
                 <div className="d-flex align-items-start">
                   <BsGripVertical className="me-2 fs-3" />
                   <div>
-                    <a href="/Courses/1234/Assignments/345" className="wd-assignment-link text-dark fw-bold text-decoration-none">
+                    <Link href="/Courses/1234/Assignments/345" className="wd-assignment-link text-dark fw-bold text-decoration-none">
                       A3 - JavaScript + React
-                    </a>
+                    </Link>
                     <div className="text-muted small">
                       <span className="text-danger">Multiple Modules</span> | <strong>Not available until</strong> May 20 at 12:00am
                     </div>
