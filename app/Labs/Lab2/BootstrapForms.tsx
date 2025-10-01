@@ -1,8 +1,10 @@
 import { Button, Col, Form, FormCheck, FormControl, FormLabel, FormSelect, InputGroup, Row } from "react-bootstrap";
 import FormRange from "react-bootstrap/esm/FormRange";
 import InputGroupText from "react-bootstrap/esm/InputGroupText";
-
-<><div id="wd-css-styling-forms">
+export default function BootstrapFormsComponent() {
+  return (
+     <div>
+    <div id="wd-css-styling-forms">
     <h2>Forms</h2>
     <FormLabel>Email address</FormLabel>
     <FormControl type="email" placeholder="name@example.com" />
@@ -89,4 +91,5 @@ import InputGroupText from "react-bootstrap/esm/InputGroupText";
    </Form>
 </div>
 
-</>
+</div>
+  );}
