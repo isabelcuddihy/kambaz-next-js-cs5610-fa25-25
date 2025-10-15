@@ -1,6 +1,4 @@
-
-import { redirect } from 'next/navigation';
-
-export default function Courses() {
-  redirect('/Dashboard');
+import { redirect } from "next/navigation";
+export default function Kambaz() {
+ redirect("/Account/Signin");
 }
