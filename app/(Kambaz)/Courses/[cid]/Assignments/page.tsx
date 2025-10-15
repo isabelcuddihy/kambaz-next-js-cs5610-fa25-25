@@ -12,7 +12,7 @@ import * as db from "../../../Database";
 export default function Assignments() {
   const { cid } = useParams();
   const courseAssignments = db.assignments.filter(
-    (assignment: any) => assignment.course === cid
+    (assignment) => assignment.course === cid
   );
   return (
     <div id="wd-assignments">
@@ -55,8 +55,8 @@ export default function Assignments() {
           </div>
 
           <ListGroup className="rounded-0">
-             {courseAssignments.map((assignment: any) => (
-            <ListGroupItem className="p-3 ps-1">
+             {courseAssignments.map((assignment) => (
+            <ListGroupItem key={assignment._id} className="p-3 ps-1">
               <div className="d-flex justify-content-between align-items-start">
                 <div className="d-flex align-items-start">
                   <BsGripVertical className="me-2 fs-3" />
