@@ -4,7 +4,7 @@ import { FaAlignJustify } from "react-icons/fa6";
 import { courses } from "../../Database";
 
 export default async function CoursesLayout(
-  { children, params }: Readonly<{ children: ReactNode; params: Promise<{ id: string }> }>) {
+  { children, params }: Readonly<{ children: ReactNode; params: Promise<{ cid: string }> }>) {
   const { cid } = await params;
   const course = courses.find((course) => course._id === cid);
   return (
