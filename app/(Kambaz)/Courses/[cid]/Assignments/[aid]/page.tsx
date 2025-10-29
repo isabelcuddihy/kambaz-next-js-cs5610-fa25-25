@@ -44,7 +44,7 @@ page.`,
       availableUntilDate: existingAssignment.availableUntilDate || "",
     });
   }
-}, []);
+},[existingAssignment, aid]);
 
   const handleSave = () => {
     if (aid === "new") {
