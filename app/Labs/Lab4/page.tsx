@@ -10,7 +10,7 @@ import DateStateVariables from "./DateStateVariable";
 import ObjectStateVariables from "./ObjectStateVariable";
 import ArrayStateVariables from "./ArrayStateVariable";
 import ParentStateComponent from "./ParentStateComponent";
-import ReduxExamples from "./ReduxExamples/page";
+import ReduxExamples from "./ReduxExamples/reduxExamples";
 import store from "./store";
 import { Provider } from "react-redux";
 
