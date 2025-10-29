@@ -52,7 +52,7 @@ page.`,
       dispatch(addAssignment({ ...assignment, course: cid }));
     } else {
       // Updating Assignment
-      dispatch(updateAssignment({ ...assignment, _id: aid }));
+      dispatch(updateAssignment({ ...assignment, _id: aid, course: cid }));
     }
     router.push(`/Courses/${cid}/Assignments`);
   };
