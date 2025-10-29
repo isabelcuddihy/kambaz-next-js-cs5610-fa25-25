@@ -70,7 +70,7 @@ const isEnrolled = (courseId: string) => {
               <Card>
                 <Link href={`/Courses/${course._id}/Home`}
                       className="wd-dashboard-course-link text-decoration-none text-dark" >
-                  <CardImg src="/images/reactjs.jpg" variant="top" width="100%" height={160} />
+                  <CardImg src="/images/reactjs.jpeg" variant="top" width="100%" height={160} />
                   <CardBody className="card-body">
                     <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
                       {course.name} </CardTitle>
@@ -111,13 +111,23 @@ const isEnrolled = (courseId: string) => {
 )}
 
 {!showAllCourses && (
-  <button onClick={(event) => {
-      event.preventDefault();
-      dispatch(deleteCourse(course._id));
-    }} className="btn btn-danger float-end"
-    id="wd-delete-course-click">
-    Delete
-  </button>
+  <>
+  <button
+                onClick={(event) => {
+                  event.preventDefault();
+                  setCourse(course);
+                } }
+                className="btn btn-warning me-2 float-end"
+                id="wd-edit-course-click"
+              >
+                Edit
+              </button><button onClick={(event) => {
+                event.preventDefault();
+                dispatch(deleteCourse(course._id));
+              } } className="btn btn-danger me-2 float-end"
+                id="wd-delete-course-click">
+                  Delete
+                </button></>
 )}
             
                   </CardBody>
