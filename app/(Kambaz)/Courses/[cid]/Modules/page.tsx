@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 export default function Modules() {
   const { cid } = useParams();
   const [moduleName, setModuleName] = useState("");
+  const [editingModuleName, setEditingModuleName] = useState("");
   const { modules } = useSelector((state: any) => state.modulesReducer);
   const dispatch = useDispatch();
 
@@ -35,27 +36,27 @@ export default function Modules() {
                 <BsGripVertical className="me-2 fs-3" />
                 {!module.editing && module.name}
                 {module.editing && (
-                  <FormControl 
-                    className="w-50 d-inline-block"
-                    onChange={(e) =>
-                      dispatch(
-                        updateModule({ ...module, name: e.target.value })
-                      )
-                    }
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        dispatch(updateModule({ ...module, editing: false }));
-                      }
-                    }}
-                    defaultValue={module.name} 
-                  />
-                )}
+  <FormControl 
+    className="w-50 d-inline-block"
+    value={editingModuleName}
+    onChange={(e) => setEditingModuleName(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        dispatch(updateModule({ ...module, name: editingModuleName, editing: false }));
+      }
+    }}
+
+  />
+)}
                 <ModuleControlButtons 
                   moduleId={module._id}
                   deleteModule={(moduleId) => {
                     dispatch(deleteModule(moduleId));
                   }}
-                  editModule={(moduleId) => dispatch(editModule(moduleId))} 
+                  editModule={(moduleId) => {
+  setEditingModuleName(module.name);
+  dispatch(editModule(moduleId));
+}} 
                 />
               </div>
             
