@@ -6,20 +6,20 @@ import { Button } from "react-bootstrap";
 {/* Find more icons */}
 export default function CourseStatus() {
  return (
-   <div id="wd-course-status" style={{ width: "350px" }}>
+   <div id="wd-course-status" style={{ minWidth: "100px" }}>
      <h2>Course Status</h2>
      <div className="d-flex">
        <div className="w-50 pe-1">
-         <Button variant="secondary" size="lg" className="w-100 text-nowrap ">
+         <Button variant="secondary" className="w-100 text-nowrap ">
            <MdDoNotDisturbAlt className="me-2 fs-5" /> Unpublish </Button> </div>
        <div className="w-50">
-         <Button variant="success" size="lg" className="w-100">
+         <Button variant="success"className="w-100">
            <FaCheckCircle className="me-2 fs-5" /> Publish </Button> </div>
      </div>
      <br />
-     <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
+     <Button variant="secondary" className="w-100 mt-1 text-start">
        <BiImport className="me-2 fs-5" /> Import Existing Content </Button>
-     <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
+     <Button variant="secondary" className="w-100 mt-1 text-start">
        <LiaFileImportSolid className="me-2 fs-5" /> Import from Commons </Button>
      {/* Complete the rest of the buttons */}
    </div> );}

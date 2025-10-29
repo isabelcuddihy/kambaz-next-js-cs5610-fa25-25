@@ -1,21 +1,21 @@
+"use client"
 import { Button, Col, Form, FormControl, FormLabel, FormSelect, Row } from "react-bootstrap";
-
+import { useParams, useRouter } from "next/navigation";
+import { useSelector, useDispatch } from "react-redux";
+import { addAssignment, updateAssignment } from "../reducer";
+import { useState, useEffect } from "react";
 export default function AssignmentEditor() {
-  return (
-    <div id="wd-assignments-editor" className="p-4">
-      <FormLabel htmlFor="wd-name">Assignment Name</FormLabel>
-      <FormControl 
-        id="wd-name" 
-        defaultValue="A1"
-      />
- <br />
-      
-      <FormControl 
-        as="textarea"
-        id="wd-description"
-        rows={10}
-        defaultValue={`
-The assignment is available online
+  const { cid, aid } = useParams();
+  const router = useRouter();
+  const { assignments } = useSelector((state: any) => state.assignmentReducer);
+  const dispatch = useDispatch();
+  
+  const existingAssignment = assignments.find((a: any) => a._id === aid);
+  
+  // Use default info for assignment
+  const [assignment, setAssignment] = useState({
+    title: "A1",
+    description: `The assignment is available online
 
 Submit a link to the landing page of your Web application running on Netlify.
 
@@ -27,7 +27,55 @@ The landing page should include the following:
 - Links to all relevant source code repositories
 
 The Kambaz application should include a link to navigate back to the landing 
-page.`}
+page.`,
+    points: 100,
+    dueDate: "2024-05-13T23:59",
+    availableFromDate: "2024-05-06T00:00",
+    availableUntilDate: "2024-05-20T23:59",
+  });
+  useEffect(() => {
+  if (existingAssignment) {
+    setAssignment({
+      title: existingAssignment.title || "",
+      description: existingAssignment.description || "",
+      points: existingAssignment.points || 100,
+      dueDate: existingAssignment.dueDate || "",
+      availableFromDate: existingAssignment.availableFromDate || "",
+      availableUntilDate: existingAssignment.availableUntilDate || "",
+    });
+  }
+}, []);
+
+  const handleSave = () => {
+    if (aid === "new") {
+      // New assignment
+      dispatch(addAssignment({ ...assignment, course: cid }));
+    } else {
+      // Updating Assignment
+      dispatch(updateAssignment({ ...assignment, _id: aid }));
+    }
+    router.push(`/Courses/${cid}/Assignments`);
+  };
+
+  const handleCancel = () => {
+    router.push(`/Courses/${cid}/Assignments`);
+  };
+  return (
+    <div id="wd-assignments-editor" className="p-4">
+      <FormLabel htmlFor="wd-name">Assignment Name</FormLabel>
+      <FormControl 
+        id="wd-name" 
+        value={assignment.title}
+        onChange={(e) => setAssignment({ ...assignment, title: e.target.value })}
+      />
+ <br />
+      
+      <FormControl 
+        as="textarea"
+        id="wd-description"
+        rows={10}
+        value={assignment.description}
+        onChange={(e) => setAssignment({ ...assignment, description: e.target.value })}
       />
   <br/>
   <Row className="mb-3">
@@ -37,7 +85,8 @@ page.`}
         <Col sm={9}>
           <FormControl 
             id="wd-points" 
-            defaultValue="100"
+            value={assignment.points}
+        onChange={(e) => setAssignment({ ...assignment, points: Number(e.target.value )})}
           />
         </Col>
       </Row>
@@ -112,8 +161,9 @@ page.`}
       <FormControl 
         type="datetime-local"
         id="wd-due-date" 
-        defaultValue="2024-05-13T23:59"
         className="mb-3"
+        value={assignment.dueDate}
+        onChange={(e) => setAssignment({ ...assignment, dueDate: e.target.value })}
       />
       
       <Row>
@@ -122,7 +172,8 @@ page.`}
           <FormControl 
             type="datetime-local"
             id="wd-available-from" 
-            defaultValue="2024-05-06T00:00"
+            value={assignment.availableFromDate}
+        onChange={(e) => setAssignment({ ...assignment, availableFromDate: e.target.value })}
           />
         </Col>
         <Col>
@@ -130,7 +181,8 @@ page.`}
           <FormControl 
             type="datetime-local"
             id="wd-available-until" 
-            defaultValue="2024-05-20T23:59"
+            value={assignment.availableUntilDate}
+        onChange={(e) => setAssignment({ ...assignment, availableUntilDate: e.target.value })}
           />
         </Col>
       </Row>
@@ -140,12 +192,12 @@ page.`}
 
 
 <div className="d-flex justify-content-end gap-2">
-  <Button variant="secondary" size="lg">
-    Cancel
-  </Button>
-  <Button variant="danger" size="lg">
-    Save
-  </Button>
+  <Button variant="secondary" size="lg" onClick={handleCancel}>
+  Cancel
+</Button>
+<Button variant="danger" size="lg" onClick={handleSave}>
+  Save
+</Button>
 </div>
     </div>
   );
