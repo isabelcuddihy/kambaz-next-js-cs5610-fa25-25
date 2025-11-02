@@ -1,6 +1,6 @@
 "use client"
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "./counterReducer";
+import { increment, decrement } from ".";
 export default function CounterRedux() {
   const { count } = useSelector((state: any) => state.counterReducer);
   const dispatch = useDispatch();
