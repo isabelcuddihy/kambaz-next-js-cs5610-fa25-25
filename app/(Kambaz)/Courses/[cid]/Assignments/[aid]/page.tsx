@@ -3,7 +3,9 @@ import { Button, Col, Form, FormControl, FormLabel, FormSelect, Row } from "reac
 import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { addAssignment, updateAssignment } from "../reducer";
+import * as client from "../../../client";
 import { useState, useEffect } from "react";
+
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
   const router = useRouter();
@@ -45,17 +47,18 @@ page.`,
     });
   }
 },[existingAssignment, aid]);
-
-  const handleSave = () => {
-    if (aid === "new") {
-      // New assignment
-      dispatch(addAssignment({ ...assignment, course: cid }));
-    } else {
-      // Updating Assignment
-      dispatch(updateAssignment({ ...assignment, _id: aid, course: cid }));
-    }
-    router.push(`/Courses/${cid}/Assignments`);
-  };
+const handleSave = async () => {
+  if (aid === "new") {
+    // Creating a new assignment
+    const newAssignment = await client.createAssignmentForCourse(cid as string, assignment);
+    dispatch(addAssignment(newAssignment));
+  } else {
+    // Updating existing assignment
+    await client.updateAssignment({ ...assignment, _id: aid });
+    dispatch(updateAssignment({ ...assignment, _id: aid }));
+  }
+  router.push(`/Courses/${cid}/Assignments`);
+};
 
   const handleCancel = () => {
     router.push(`/Courses/${cid}/Assignments`);
@@ -135,7 +138,7 @@ page.`,
         <strong>Online Entry Options</strong>
         <div className="mt-2">
           <Form.Check type="checkbox" id="wd-text-entry" label="Text Entry" />
-          <Form.Check type="checkbox" id="wd-website-url" label="Website URL" defaultChecked />
+          <Form.Check type="checkbox" id="wd-website-url" label="Website URL"  checked />
           <Form.Check type="checkbox" id="wd-media-recordings" label="Media Recordings" />
           <Form.Check type="checkbox" id="wd-student-annotation" label="Student Annotation" />
           <Form.Check type="checkbox" id="wd-file-upload" label="File Uploads" />

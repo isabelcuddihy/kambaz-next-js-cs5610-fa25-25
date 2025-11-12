@@ -13,7 +13,7 @@ export default function BootstrapFormsComponent() {
 </div><div id="wd-css-styling-dropdowns">
         <h3>Dropdowns</h3>
         <FormSelect>
-            <option value="0" defaultChecked>Open this select menu</option>
+            <option value="0" checked>Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
@@ -21,10 +21,10 @@ export default function BootstrapFormsComponent() {
     </div>
     <div id="wd-css-styling-switches">
   <h3>Switches</h3>
-  <FormCheck type="switch" defaultChecked={false} label="Unchecked switch checkbox input"/>
-  <FormCheck type="switch" defaultChecked={true}  label="Checked switch checkbox input"/>
-  <FormCheck type="switch" defaultChecked={false} label="Unchecked disabled switch checkbox input" disabled/>
-  <FormCheck type="switch" defaultChecked={true}  label="Checked disabled switch checkbox input"   disabled/>
+  <FormCheck type="switch" checked={false} label="Unchecked switch checkbox input"/>
+  <FormCheck type="switch" checked={true}  label="Checked switch checkbox input"/>
+  <FormCheck type="switch" checked={false} label="Unchecked disabled switch checkbox input" disabled/>
+  <FormCheck type="switch" checked={true}  label="Checked disabled switch checkbox input"   disabled/>
 </div>
 <div id="wd-css-styling-range-and-sliders">
   <h3>Range</h3>
@@ -80,7 +80,7 @@ export default function BootstrapFormsComponent() {
          <Row className="mb-3">
             <FormLabel as="legend" column sm={2}> Radios </FormLabel>
             <Col sm={10}>
-               <FormCheck type="radio" label="First radio" name="formHorizontalRadios" defaultChecked />
+               <FormCheck type="radio" label="First radio" name="formHorizontalRadios" checked />
                <FormCheck type="radio" label="Second radio" name="formHorizontalRadios" />
                <FormCheck type="radio" label="Third radio" name="formHorizontalRadios" />
                <FormCheck type="radio" label="Remember me" name="formHorizontalRadios" />

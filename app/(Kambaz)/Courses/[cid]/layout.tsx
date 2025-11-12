@@ -2,7 +2,6 @@
 import { ReactNode, useEffect } from "react";
 import CourseNavigation from "./Navigation";
 import { FaAlignJustify } from "react-icons/fa6";
-import { courses } from "../../Database";
 import { useSelector } from "react-redux";
 import { useParams, useRouter } from "next/navigation";
 

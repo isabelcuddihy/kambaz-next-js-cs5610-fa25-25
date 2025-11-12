@@ -2,12 +2,30 @@
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import { useParams } from "next/navigation";
+import { useState, useEffect } from "react";
 
-import * as db from "../../../../Database";
-
+import * as client from "../../../client";
 export default function PeopleTable() {
   const { cid } = useParams();
-  const { users, enrollments } = db;
+   const [users, setUsers] = useState<any[]>([]);
+  const [enrollments, setEnrollments] = useState<any[]>([]);
+  
+   const fetchAllUsers = async () => {
+    const allUsers = await client.findAllUsers();
+    setUsers(allUsers);
+  };
+  
+  const fetchAllEnrollments = async () => {
+    const courseEnrollments = await client.findEnrollmentsByCourse(cid as string);
+    setEnrollments(courseEnrollments);
+  };
+
+  useEffect(() => {
+    if (cid) {
+      fetchAllUsers();
+      fetchAllEnrollments();
+    }
+  }, [cid]);
  return (
   <div id="wd-people-table">
    <Table striped>

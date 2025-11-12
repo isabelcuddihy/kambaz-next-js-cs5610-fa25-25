@@ -5,7 +5,7 @@ const TodoItem = ( { todo = { done: true, title: 'Buy milk',
  return (
    <ListGroupItem>
      <input type="checkbox" className="me-2"
-            defaultChecked={todo.done}/>
+            checked={todo.done}/>
      {todo.title} ({todo.status})
    </ListGroupItem>
  );}

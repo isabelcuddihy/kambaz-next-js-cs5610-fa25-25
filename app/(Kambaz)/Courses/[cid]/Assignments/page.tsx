@@ -1,6 +1,6 @@
 "use client"
 import { Button, ListGroup, ListGroupItem } from "react-bootstrap";
-import { BsGripVertical, BsPlus, BsTrash3Fill } from "react-icons/bs";
+import { BsGripVertical, BsPencilFill, BsPlus, BsTrash3Fill } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 import { IoEllipsisVertical } from "react-icons/io5";
@@ -8,13 +8,42 @@ import GreenCheckmark from "../Modules/GreenCheckmark";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import * as db from "../../../Database";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteAssignment } from "./reducer";
+import { setAssignments, deleteAssignment } from "./reducer";
+import * as client from "../../client";
+import { useEffect } from "react";
 export default function Assignments() {
   const { cid } = useParams();
   const { assignments } = useSelector((state: any) => state.assignmentReducer);
   const dispatch = useDispatch();
+
+      const onUpdateAssignment = async (assignment: any) => {
+      await client.updateAssignment(assignment);
+      const newAssignments = assignments.map((a: any) => a._id === assignment._id ? assignment : a );
+      dispatch(setAssignments(newAssignments));
+    };
+  
+     const onRemoveAssignment = async (assignmentId: string) => {
+      await client.deleteAssignment(assignmentId);
+       if (window.confirm("Are you sure you want to remove this assignment?")) {
+    onRemoveAssignment(assignmentId);
+  }
+    };
+  
+     const onCreateAssignmentForCourse = async (title: string) => {
+      if (!cid) return;
+      const newAssignment = { title: title, course: cid };
+      const assignment = await client.createAssignmentForCourse(cid as string, newAssignment);
+      dispatch(setAssignments([...assignments, assignment]));
+    };
+  
+   const fetchAssignments = async () => {
+      const assignments = await client.findAssignmentsForCourse(cid as string);
+      dispatch(setAssignments(assignments));
+    };
+    useEffect(() => {
+      fetchAssignments();
+    }, []);
   const router = useRouter();
   const courseAssignments = assignments.filter(
   (assignment: any) => assignment.course === cid
@@ -85,6 +114,11 @@ export default function Assignments() {
                   </div>
                 </div>
                 <div>
+                  <BsPencilFill 
+    className="text-primary me-2 mb-1"
+    style={{ cursor: "pointer" }}
+    onClick={() => router.push(`/Courses/${cid}/Assignments/${assignment._id}`)}
+  />
   <BsTrash3Fill 
     className="text-danger me-2 mb-1"
     style={{ cursor: "pointer" }}
