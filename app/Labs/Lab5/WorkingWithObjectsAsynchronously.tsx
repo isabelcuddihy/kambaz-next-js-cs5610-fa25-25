@@ -23,7 +23,7 @@ export default function WorkingWithObjectsAsynchronously() {
         onChange={(e) => setAssignment({ ...assignment, id: e.target.value }) } /> ID
       <FormControl value={assignment.title} className="mb-2"
         onChange={(e) => setAssignment({ ...assignment, title: e.target.value }) } /> Title
-      <FormControl rows={6} value={assignment.description} className="mb-2"
+      <FormControl as="textarea" rows={6} value={assignment.description} className="mb-2"
         onChange={(e) => setAssignment({ ...assignment, description: e.target.value }) }/> Description
       <FormControl type="date" className="mb-2" value={assignment.due}
         onChange={(e) => setAssignment({ ...assignment, due: e.target.value })} />

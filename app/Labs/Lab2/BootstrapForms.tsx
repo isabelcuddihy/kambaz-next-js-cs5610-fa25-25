@@ -13,7 +13,7 @@ export default function BootstrapFormsComponent() {
 </div><div id="wd-css-styling-dropdowns">
         <h3>Dropdowns</h3>
         <FormSelect>
-            <option value="0" checked>Open this select menu</option>
+            <option value="0">Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
