@@ -8,13 +8,13 @@ export default function WorkingWithObjects() {
     description: "Create a NodeJS server with ExpressJS",
     due: "2021-10-10", completed: false, score: 0,
   });
-  const ASSIGNMENT_API_URL = `${HTTP_SERVER}lab5/assignment`
+  const ASSIGNMENT_API_URL = `${HTTP_SERVER}/lab5/assignment`
    const [module, setModule] = useState({
     id: 1, name: "Intro to NodeJS",
     description: "Explore the basics of NodeJS",
     course: "WD101",
   });
-  const MODULE_API_URL = `${HTTP_SERVER}lab5/module`
+  const MODULE_API_URL = `${HTTP_SERVER}/lab5/module`
   return (
     <div id="wd-working-with-objects">
       <h3>Working With Objects</h3>
@@ -29,12 +29,12 @@ export default function WorkingWithObjects() {
       <hr />
       <h4>Retrieving Objects</h4>
       <a id="wd-retrieve-assignments" className="btn btn-primary"
-         href={`${HTTP_SERVER}lab5/assignment`}>
+         href={`${HTTP_SERVER}/lab5/assignment`}>
         Get Assignment
       </a><hr/>
        <h4>Retrieving Properties</h4>
       <a id="wd-retrieve-assignment-title" className="btn btn-primary"
-         href={`${HTTP_SERVER}lab5/assignment/title`}>
+         href={`${HTTP_SERVER}/lab5/assignment/title`}>
         Get Assignment Title
       </a><hr/>
     
@@ -72,17 +72,17 @@ export default function WorkingWithObjects() {
       <hr />
       <h4>Retrieving Module Objects</h4>
       <a id="wd-retrieve-modules" className="btn btn-success"
-         href={`${HTTP_SERVER}lab5/module`}>
+         href={`${HTTP_SERVER}/lab5/module`}>
         Get Module
       </a><hr/>
        <h4>Retrieving Module Properties</h4>
       <a id="wd-retrieve-module-name" className="btn btn-primary"
-         href={`${HTTP_SERVER}lab5/module/name`}>
+         href={`${HTTP_SERVER}/lab5/module/name`}>
         Get Module Name
       </a><hr/>
       <h4>Retrieving Module Description</h4>
       <a id="wd-retrieve-module-description" className="btn btn-warning"
-         href={`${HTTP_SERVER}lab5/module/description`}>
+         href={`${HTTP_SERVER}/lab5/module/description`}>
         Get Module Description
       </a><hr/>
 

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FormControl } from "react-bootstrap";
 const HTTP_SERVER = process.env.NEXT_PUBLIC_HTTP_SERVER;
 export default function WorkingWithArrays() {
-  const API = `${HTTP_SERVER}lab5/todos`;
+  const API = `${HTTP_SERVER}/lab5/todos`;
   const [todo, setTodo] = useState({id: "1",  title: "NodeJS Assignment",
     description: "Create a NodeJS server with ExpressJS",
     due: "2021-09-09",

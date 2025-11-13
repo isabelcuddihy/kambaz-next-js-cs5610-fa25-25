@@ -12,7 +12,7 @@ export default function HttpClient() {
     const message = await client.fetchWelcomeMessage();
     setWelcomeOnClick(message);
 
-    const response = await axios.get(`${HTTP_SERVER}lab5/welcome`);
+    const response = await axios.get(`${HTTP_SERVER}/lab5/welcome`);
     setWelcomeOnClick(response.data);
   };
    const fetchWelcomeOnLoad = async () => {

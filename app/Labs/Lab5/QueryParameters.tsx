@@ -17,17 +17,17 @@ export default function QueryParameters() {
          value={b} type="number"
          onChange={(e) => setB(e.target.value)} />
   <a className = "btn btn-primary me-2" id="wd-query-parameter-add"
-     href={`${HTTP_SERVER}lab5/calculator?operation=add&a=${a}&b=${b}`}>
+     href={`${HTTP_SERVER}/lab5/calculator?operation=add&a=${a}&b=${b}`}>
     Add {a} + {b}
   </a>
   <a className = "btn btn-danger me-2" id="wd-query-parameter-subtract"
-     href={`${HTTP_SERVER}lab5/calculator?operation=subtract&a=${a}&b=${b}`}>
+     href={`${HTTP_SERVER}/lab5/calculator?operation=subtract&a=${a}&b=${b}`}>
     Substract {a} - {b}
   </a>
-  <a className = "btn btn-success me-2" id="wd-query-parameter-multiply" href={`${HTTP_SERVER}lab5/calculator?operation=multiply&a=${a}&b=${b}`}>
+  <a className = "btn btn-success me-2" id="wd-query-parameter-multiply" href={`${HTTP_SERVER}/lab5/calculator?operation=multiply&a=${a}&b=${b}`}>
     Multiply {a} * {b}
   </a>
-  <a className = "btn btn-warning me-2" id="wd-query-parameter-divide" href={`${HTTP_SERVER}lab5/calculator?operation=divide&a=${a}&b=${b}`}>
+  <a className = "btn btn-warning me-2" id="wd-query-parameter-divide" href={`${HTTP_SERVER}/lab5/calculator?operation=divide&a=${a}&b=${b}`}>
     Divide {a} / {b}
   </a> 
 
