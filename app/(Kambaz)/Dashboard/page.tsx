@@ -143,7 +143,7 @@ const isEnrolled = (courseId: string) => {
   )
 )}
 
-{!showAllCourses && (
+{!showAllCourses && currentUser?.role === 'FACULTY' && (
   <>
   <button
                 onClick={(event) => {
