@@ -14,6 +14,7 @@ import * as client from "../../client";
 import { useEffect } from "react";
 export default function Assignments() {
   const { cid } = useParams();
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { assignments } = useSelector((state: any) => state.assignmentReducer);
   const dispatch = useDispatch();
 
@@ -61,22 +62,23 @@ export default function Assignments() {
             id="wd-search-assignment"
           />
         </div>
-        <Button variant="secondary" size="lg" className="me-2 float-end" id="wd-add-assignment-group">
-          <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-          Group
-        </Button>
-        < Button 
-          variant="danger" 
-          size="lg" 
-          className="me-2 float-end" 
-          id="wd-add-assignment"
-          onClick={() => router.push(`/Courses/${cid}/Assignments/new`)}
-        >
-          <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-          Assignment
-        </Button>
+        {currentUser?.role === 'FACULTY' && (
+        <><Button variant="secondary" size="lg" className="me-2 float-end" id="wd-add-assignment-group">
+            <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+            Group
+          </Button><Button
+            variant="danger"
+            size="lg"
+            className="me-2 float-end"
+            id="wd-add-assignment"
+            onClick={() => router.push(`/Courses/${cid}/Assignments/new`)}
+          >
+              <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+              Assignment
+            </Button></>
+        )}
       </div>
-
+        
       <br /><br />
 
       {/* Assignments List */}
@@ -113,7 +115,10 @@ export default function Assignments() {
 </div>
                   </div>
                 </div>
+                
                 <div>
+                  {currentUser?.role === 'FACULTY' && (
+                  <>
                   <BsPencilFill 
     className="text-primary me-2 mb-1"
     style={{ cursor: "pointer" }}
@@ -128,6 +133,8 @@ export default function Assignments() {
       }
     }}
   />
+  </>
+  )}
   <GreenCheckmark />
   <IoEllipsisVertical className="fs-4" />
 </div>

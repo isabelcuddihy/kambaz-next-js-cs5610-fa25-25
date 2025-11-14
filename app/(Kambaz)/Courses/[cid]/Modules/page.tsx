@@ -61,7 +61,7 @@ export default function Modules() {
     value={editingModuleName}
     onChange={(e) => setEditingModuleName(e.target.value)}
     onKeyDown={(e) => {
-      if (e.key === "Enter") { onUpdateModule({ ...module, editing: false });
+      if (e.key === "Enter") { onUpdateModule({ ...module, name: editingModuleName, editing: false });
       }
     }}
 
