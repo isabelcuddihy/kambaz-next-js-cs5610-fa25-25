@@ -104,9 +104,12 @@ export default function Assignments() {
                 <div className="d-flex align-items-start">
                   <BsGripVertical className="me-2 fs-3" />
                   <div>
+                    {currentUser?.role === 'FACULTY' && (
+        <>
                     <Link href={`/Courses/${cid}/Assignments/${assignment._id}`} className="wd-assignment-link text-dark fw-bold text-decoration-none">
                       {assignment.title}
                     </Link>
+                    </>)}
                    <div className="text-muted small">
   <span className="text-danger">Multiple Modules</span> | <strong>Not available until</strong> {assignment.availableFromDate || "May 6 at 12:00am"}
 </div>
