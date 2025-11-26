@@ -25,6 +25,10 @@ const dispatch = useDispatch();
       if (showAllCourses) {
       courses = await client.fetchAllCourses();
     } else {
+      if (!currentUser) {
+        dispatch(setCourses([]));
+        return;
+      }
       courses = await client.findMyCourses();
     }
       dispatch(setCourses(courses));
@@ -32,10 +36,7 @@ const dispatch = useDispatch();
       console.error(error);
     }
   };
-  useEffect(() => {
-  fetchCourses();
-  fetchEnrollments();
-}, [currentUser, showAllCourses]); 
+
 
 const fetchEnrollments = async () => {
   try {
@@ -71,6 +72,11 @@ const isEnrolled = (courseId: string) => {
         else { return c; }
     })));};
 
+
+  useEffect(() => {
+    fetchCourses();
+    fetchEnrollments();
+  }, [currentUser, showAllCourses]);
 
     return (
       

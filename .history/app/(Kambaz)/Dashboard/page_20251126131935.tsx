@@ -72,6 +72,11 @@ const isEnrolled = (courseId: string) => {
     })));};
 
 
+  useEffect(() => {
+    fetchCourses();
+    fetchEnrollments();
+  }, [currentUser, showAllCourses]);
+
     return (
       
     <div id="wd-dashboard">

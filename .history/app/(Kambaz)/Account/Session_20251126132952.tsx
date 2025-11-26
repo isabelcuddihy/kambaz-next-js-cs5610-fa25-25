@@ -9,9 +9,9 @@ export default function Session({ children }: { children: any }) {
     const fetchProfile = async () => {
       try {
         const currentUser = await client.profile();
-        console.log("Session: fetched user:", currentUser); 
+
         dispatch(setCurrentUser(currentUser));
-        console.log("Session: dispatched to Redux");
+
       } catch (err: any) {
         console.log("Session: fetch failed", err.response?.status); 
       }
