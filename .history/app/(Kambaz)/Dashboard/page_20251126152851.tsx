@@ -27,7 +27,6 @@ const dispatch = useDispatch();
     } else {
       courses = await client.findMyCourses();  
     }
-    dispatch(setCourses(courses)); 
     } catch (error) {
       console.error(error);
     }

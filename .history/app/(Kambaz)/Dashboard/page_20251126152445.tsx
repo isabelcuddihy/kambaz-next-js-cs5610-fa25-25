@@ -20,14 +20,9 @@ const dispatch = useDispatch();
     image: "/images/reactjs.jpg", description: "New Description"
   });
    const fetchCourses = async () => {
-    let courses = [];
     try {
-       if (showAllCourses) {
-      courses = await client.fetchAllCourses();  
-    } else {
-      courses = await client.findMyCourses();  
-    }
-    dispatch(setCourses(courses)); 
+      const courses = await client.findMyCourses();
+      dispatch(setCourses(courses));
     } catch (error) {
       console.error(error);
     }
