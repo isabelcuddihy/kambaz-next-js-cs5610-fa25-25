@@ -31,7 +31,7 @@ export default function Profile() {
      <h3>Profile</h3>
      {profile && (
        <div>
-                  <FormControl id="wd-username" className="mb-2"
+         <FormControl id="wd-username" className="mb-2"
            value={profile.username || ""}
            onChange={(e) => setProfile({ ...profile, username: e.target.value }) }
          />

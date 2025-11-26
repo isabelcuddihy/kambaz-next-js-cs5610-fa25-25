@@ -45,7 +45,11 @@ export default function Assignments() {
     useEffect(() => {
       fetchAssignments();
     }, []);
-   
+      useEffect(() => {
+    if (currentUser && currentUser.role !== 'FACULTY') {
+      router.push(`/Courses/${cid}/Assignments`);
+    }
+  }, [currentUser, cid, router]);
   
   const courseAssignments = assignments.filter(
   (assignment: any) => assignment.course === cid

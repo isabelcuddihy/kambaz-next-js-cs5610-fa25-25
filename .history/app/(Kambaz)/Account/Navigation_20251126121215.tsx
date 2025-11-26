@@ -8,8 +8,8 @@ import {RootState}  from "../store";
 
 export default function AccountNavigation() {
 const pathname = usePathname();
+ const { currentUser } = useSelector((state: RootState) => state.accountReducer);
  
- const { currentUser } = useSelector((state: any) => state.accountReducer);
  return (
   <Nav variant="pills">
    

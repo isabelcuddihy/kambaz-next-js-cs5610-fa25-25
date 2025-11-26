@@ -8,8 +8,8 @@ import {RootState}  from "../store";
 
 export default function AccountNavigation() {
 const pathname = usePathname();
+ const { currentUser } = useSelector((state: RootState) => state.accountReducer);
  
- const { currentUser } = useSelector((state: any) => state.accountReducer);
  return (
   <Nav variant="pills">
    
@@ -30,7 +30,7 @@ const pathname = usePathname();
         }`}
      style={pathname.includes("Profile") ? { borderLeft: "10px solid black", padding: "5px" } : {}}
 > Profile </Link> <br />
-  {currentUser?.role === "ADMIN" && (
+  {currentUser && currentUser.role === "ADMIN" && (
        <NavLink as={Link} href={`/Account/Users`}  active={pathname.endsWith('Users')}> Users </NavLink> )}
   
  </div>

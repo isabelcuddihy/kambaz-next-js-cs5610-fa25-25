@@ -17,7 +17,6 @@ export default function Assignments() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { assignments } = useSelector((state: any) => state.assignmentReducer);
   const dispatch = useDispatch();
-  const router = useRouter();
 
       const onUpdateAssignment = async (assignment: any) => {
       await client.updateAssignment(cid as string, assignment);
@@ -45,8 +44,7 @@ export default function Assignments() {
     useEffect(() => {
       fetchAssignments();
     }, []);
-   
-  
+  const router = useRouter();
   const courseAssignments = assignments.filter(
   (assignment: any) => assignment.course === cid
 );

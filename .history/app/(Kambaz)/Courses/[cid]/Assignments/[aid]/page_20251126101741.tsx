@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { addAssignment, updateAssignment } from "../reducer";
 import * as client from "../../../client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
@@ -12,7 +12,6 @@ export default function AssignmentEditor() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { assignments } = useSelector((state: any) => state.assignmentReducer);
   const dispatch = useDispatch();
-  const hasShownAlert = useRef(false);
   
   const existingAssignment = assignments.find((a: any) => a._id === aid);
   
@@ -38,9 +37,7 @@ page.`,
     availableUntilDate: "2024-05-20T23:59",
   });
      useEffect(() => {
-    if (currentUser && currentUser.role !== 'FACULTY' && !hasShownAlert.current) {
-      hasShownAlert.current = true;
-      window.alert("You do not have permission to edit assignments");
+    if (currentUser && currentUser.role !== 'FACULTY') {
       router.push(`/Courses/${cid}/Assignments`);
     }
   }, [currentUser, cid, router]);

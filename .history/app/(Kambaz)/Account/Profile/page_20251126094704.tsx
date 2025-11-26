@@ -15,7 +15,9 @@ export default function Profile() {
   };
 
  const fetchProfile = () => {
-   if (!currentUser) return redirect("/Account/Signin");
+  if (!currentUser) {
+  return <div>Loading...</div>;
+}
    setProfile(currentUser);
  };
  const signout = async () => {
@@ -24,14 +26,20 @@ export default function Profile() {
    redirect("/Account/Signin");
  };
  useEffect(() => {
-   fetchProfile();
- }, []);
+  if (currentUser) {
+    const formattedProfile = { ...currentUser };
+    if (formattedProfile.dob) {
+      formattedProfile.dob = new Date(formattedProfile.dob).toISOString().split('T')[0];
+    }
+    setProfile(formattedProfile);
+  }
+}, [currentUser]);
  return (
    <div className="wd-profile-screen">
      <h3>Profile</h3>
      {profile && (
        <div>
-                  <FormControl id="wd-username" className="mb-2"
+         <FormControl id="wd-username" className="mb-2"
            value={profile.username || ""}
            onChange={(e) => setProfile({ ...profile, username: e.target.value }) }
          />

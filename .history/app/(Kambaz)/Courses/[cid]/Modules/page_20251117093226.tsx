@@ -13,13 +13,12 @@ import { useSelector, useDispatch } from "react-redux";
 export default function Modules() {
   const { cid } = useParams();
   const [moduleName, setModuleName] = useState("");
-  const { currentUser } = useSelector((state: any) => state.accountReducer);
   const [editingModuleName, setEditingModuleName] = useState("");
   const { modules } = useSelector((state: any) => state.modulesReducer);
   const dispatch = useDispatch();
 
   const onUpdateModule = async (module: any) => {
-   await client.updateModule(cid as string, module);
+   await client.updateModule(cid, module);
    const newModules = modules.map((m: any) =>
      m._id === module._id ? module : m
    );
@@ -28,7 +27,7 @@ export default function Modules() {
 
 
   const onRemoveModule = async (moduleId: string) => {
-   await client.deleteModule(cid as string, moduleId);
+   await client.deleteModule(cid, moduleId);
    dispatch(setModules(modules.filter((m: any) => m._id !== moduleId)));
  };
 
@@ -50,10 +49,9 @@ export default function Modules() {
 
   return (
     <div className="wd-modules">
-      {currentUser?.role === 'FACULTY' && (
       <ModulesControls 
         setModuleName={setModuleName} moduleName={moduleName} addModule={onCreateModuleForCourse}
-      />)}
+      />
       <ListGroup id="wd-modules" className="rounded-0">
         {modules
           .map((module: any) => (
